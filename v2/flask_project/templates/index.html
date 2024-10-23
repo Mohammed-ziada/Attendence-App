@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Form</title>
+</head>
+<body>
+    <h1>Attendance Form</h1>
+    <form method="POST">
+        <label for="day">Day:</label>
+        <select name="day" id="day" required>
+            {% for day in days %}
+            <option value="{{ day }}">{{ day }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+
+        <label for="grade">Grade:</label>
+        <select name="grade" id="grade" required>
+            {% for grade in grades %}
+            <option value="{{ grade }}">{{ grade }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+
+        <label for="time">Time:</label>
+        <select name="time" id="time" required>
+            {% for time in times %}
+            <option value="{{ time }}">{{ time }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+
+        <button type="submit" name="load_students">Load Students</button>
+        <br><br>
+
+        {% if students %}
+        <table border="1">
+            <tr>
+                <th>Student Name</th>
+                <th>Amount</th>
+            </tr>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.name }}</td>
+                <td>{{ student.amount }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br><br>
+        {% endif %}
+
+        <label for="supervisor">Supervisor:</label>
+        <select name="supervisor" id="supervisor" required>
+            {% for supervisor in supervisors %}
+            <option value="{{ supervisor }}">{{ supervisor }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+
+        <button type="submit" name="submit">Submit</button>
+    </form>
+</body>
+</html>
